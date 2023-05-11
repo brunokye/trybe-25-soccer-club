@@ -3,7 +3,8 @@ import TeamController from '../controllers/Team.controller';
 
 const router = Router();
 
-const { getTeams } = TeamController;
+const { getTeams, getTeamById } = TeamController;
 
 export default router
-  .get('/', getTeams);
+  .get('/', getTeams)
+  .get('/:id', getTeamById);
