@@ -1,12 +1,12 @@
 import TeamModel from '../database/models/Team.model';
-import { Team } from '../interfaces';
+import { ITeam } from '../utils/interfaces';
 
 export default class TeamService {
-  public static async getTeams(): Promise<Team[]> {
+  public static async getTeams(): Promise<ITeam[]> {
     return TeamModel.findAll();
   }
 
-  public static async getTeamById(id: number): Promise<Team | null> {
+  public static async getTeamById(id: number): Promise<ITeam | null> {
     return TeamModel.findByPk(id);
   }
 }
