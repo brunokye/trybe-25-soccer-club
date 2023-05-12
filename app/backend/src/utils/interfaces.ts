@@ -3,7 +3,15 @@ export interface ITeam {
   teamName: string;
 }
 
-export interface IUser {
+export interface ICredentials {
   email: string;
   password: string;
+}
+
+export interface IUser {
+  id?: number,
+  username: string,
+  role: string,
+  email: string,
+  password: string,
 }

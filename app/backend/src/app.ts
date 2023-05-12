@@ -1,7 +1,6 @@
 import * as express from 'express';
 import TeamRoutes from './routes/Team.routes';
 import UserRoutes from './routes/User.routes';
-import handleError from './utils/handleError';
 
 class App {
   public app: express.Express;
@@ -28,8 +27,6 @@ class App {
 
     this.app.use('/teams', TeamRoutes);
     this.app.use('/login', UserRoutes);
-
-    this.app.use(handleError);
   }
 
   public start(PORT: string | number):void {
