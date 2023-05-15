@@ -18,8 +18,8 @@ const verifyCredentials = async (req: Request, res: Response, next: NextFunction
   const db = await UserService.getByEmail(email);
   if (!db) return res.status(401).json({ message: invalidMessage });
 
-  const verifyPassword = await compare(password, db.password);
-  if (!verifyPassword) return res.status(401).json({ message: invalidMessage });
+  const validPasssword = await compare(password, db.password);
+  if (!validPasssword) return res.status(401).json({ message: invalidMessage });
 
   next();
 };

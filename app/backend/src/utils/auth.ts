@@ -1,4 +1,4 @@
-import { SignOptions, sign } from 'jsonwebtoken';
+import { SignOptions, sign, verify, decode, JwtPayload } from 'jsonwebtoken';
 
 const secret = process.env.JWT_SECRET || 'secret';
 
@@ -7,10 +7,21 @@ const jwtConfig: SignOptions = {
   algorithm: 'HS256',
 };
 
-const createToken = (username: string): string => {
-  const token: string = sign({ data: { username } }, secret, jwtConfig);
+const createToken = (email: string) => sign({ data: { email } }, secret, jwtConfig);
 
-  return token;
+const validateToken = (token: string) => {
+  try {
+    return verify(token, secret);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
-export default createToken;
+const decodeToken = (token: string) => {
+  const result = decode(token) as JwtPayload;
+  const { email } = result.data;
+
+  return email;
+};
+
+export { createToken, validateToken, decodeToken };
