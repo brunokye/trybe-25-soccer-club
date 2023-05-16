@@ -15,4 +15,16 @@ export default class MatchController {
     const matches = await MatchService.getMatches();
     res.status(200).json(matches);
   }
+
+  public static async finishMatch(req: Request, res: Response): Promise<Response | void> {
+    const { id } = req.params;
+    await MatchService.finishMatch(Number(id));
+    res.status(200).json({ message: 'Finished' });
+  }
+
+  public static async updateScore(req: Request, res: Response): Promise<Response | void> {
+    const { id } = req.params;
+    const update = await MatchService.updateScore(Number(id), req.body);
+    res.status(200).json(update);
+  }
 }
