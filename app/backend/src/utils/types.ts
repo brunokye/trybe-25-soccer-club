@@ -1,31 +1,38 @@
-export interface ITeam {
+export type Team = {
   id?: number;
   teamName: string;
-}
+};
 
-export interface ICredentials {
+export type Credentials = {
   email: string;
   password: string;
-}
+};
 
-export interface IUser {
+export type User = {
   id?: number;
   username: string;
   role: string;
   email: string;
   password: string;
-}
+};
 
-export interface IMatch {
+export type Match = {
   id?: number;
   homeTeamId: number;
   homeTeamGoals: number;
   awayTeamId: number;
   awayTeamGoals: number;
   inProgress: boolean;
-}
+};
 
-export interface IScore {
+export type NewMatch = {
+  homeTeamId: number;
+  homeTeamGoals: number;
+  awayTeamId: number;
+  awayTeamGoals: number;
+};
+
+export type Score = {
   homeTeamGoals: number;
   awayTeamGoals: number;
-}
+};

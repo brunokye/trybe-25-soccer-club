@@ -1,14 +1,14 @@
-import { ICredentials, IUser } from '../utils/interfaces';
+import { Credentials, User } from '../utils/types';
 import UserModel from '../database/models/User.model';
 import { createToken, decodeToken } from '../utils/auth';
 
 export default class UserService {
-  public static async login(userCredentials: ICredentials): Promise<string> {
+  public static async login(userCredentials: Credentials): Promise<string> {
     const { email } = userCredentials;
     return createToken(email);
   }
 
-  public static async getByEmail(email: string): Promise<IUser | null> {
+  public static async getByEmail(email: string): Promise<User | null> {
     const user = await UserModel.findOne({ where: { email } });
     return user;
   }
