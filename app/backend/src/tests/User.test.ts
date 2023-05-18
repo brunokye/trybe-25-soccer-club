@@ -9,7 +9,8 @@ import { app } from '../app';
 import { Response } from 'superagent';
 
 import UserService from '../services/User.service';
-import { authorization, credentials, role, token } from './mocks/user.mock';
+import { credentials, role } from './mocks/user.mock';
+import { authorization, token } from './mocks/auth.mock';
 
 chai.use(chaiHttp);
 
