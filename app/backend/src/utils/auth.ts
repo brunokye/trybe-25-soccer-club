@@ -7,9 +7,9 @@ const jwtConfig: SignOptions = {
   algorithm: 'HS256',
 };
 
-const createToken = (email: string) => sign({ data: { email } }, secret, jwtConfig);
+export const createToken = (email: string) => sign({ data: { email } }, secret, jwtConfig);
 
-const validateToken = (token: string) => {
+export const validateToken = (token: string) => {
   try {
     return verify(token, secret);
   } catch (e) {
@@ -17,11 +17,9 @@ const validateToken = (token: string) => {
   }
 };
 
-const decodeToken = (token: string) => {
+export const decodeToken = (token: string) => {
   const result = decode(token) as JwtPayload;
   const { email } = result.data;
 
   return email;
 };
-
-export { createToken, validateToken, decodeToken };
